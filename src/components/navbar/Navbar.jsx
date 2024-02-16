@@ -1,37 +1,46 @@
-import Sidebar from "../sidebar/Sidebar";
-import "./navbar.scss";
-import { motion } from "framer-motion";
+import { useState } from "react";
 
-const Navbar = () => {
+import styles from "./navbar.module.scss";
+import { getImageUrl } from "../../utils";
+
+export const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="navbar">
-      {/* Sidebar */}
-      <Sidebar/>
-      <div className="wrapper">
-        <motion.span
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+    <nav className={styles.navbar}>
+      <a className={styles.title} href="/">
+        Portfolio
+      </a>
+      <div className={styles.menu}>
+        <img
+          className={styles.menuBtn}
+          src={
+            menuOpen
+              ? getImageUrl("nav/closeIcon.png")
+              : getImageUrl("nav/menuIcon.png")
+          }
+          alt="menu-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+        />
+        <ul
+          className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
+          onClick={() => setMenuOpen(false)}
         >
-          Lama Dev
-        </motion.span>
-        <div className="social">
-          <a href="#">
-            <img src="/facebook.png" alt="" />
-          </a>
-          <a href="#">
-            <img src="/instagram.png" alt="" />
-          </a>
-          <a href="#">
-            <img src="/youtube.png" alt="" />
-          </a>
-          <a href="#">
-            <img src="/dribbble.png" alt="" />
-          </a>
-        </div>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#experience">Experience</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#about">Contact</a>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
   );
 };
-
-export default Navbar;
+export default Navbar

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import "./hero.scss";
 import { motion } from "framer-motion";
 
@@ -10,7 +11,7 @@ const textVariants = {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 3,
       staggerChildren: 0.1,
     },
   },
@@ -47,17 +48,18 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h2 variants={textVariants}>HARVEY TYLER</motion.h2>
+          <motion.h2 style={{fontSize: '40px'}}>JHONATTAN FONSECA</motion.h2>
           <motion.h1 variants={textVariants}>
-            Web developer and UI designer
+            Frontend Developer & UX/ UI Passionate
           </motion.h1>
-          <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
+          {/* <motion.div variants={textVariants} className="buttons">
+            <motion.button style={{cursor: "pointer"}} variants={textVariants}>
               See the Latest Works
             </motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
-          </motion.div>
+            <motion.button style={{cursor: "pointer"}} variants={textVariants}>Contact Me</motion.button>
+          </motion.div> */}
           <motion.img
+          style={{marginTop: '3rem'}}
             variants={textVariants}
             animate="scrollButton"
             src="/scroll.png"
@@ -71,7 +73,7 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        Writer Content Creator Influencer
+        Jhonattan Fonseca
       </motion.div>
       <div className="imageContainer">
         <img src="/hero.png" alt="" />
